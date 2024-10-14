@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Test Site</title>
-</head>
-<body>
+  </head>
+  <body>
     <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2024/10/12/11/20241012114508-FMJPRO9S.js"></script>
-    <script>
-        window.botpressWebChat.onEvent(
-            (event) => {
-                if (event.type === 'MESSAGE RECEIVED') {
-                    console.log('A new message was received!')
-                        if(event.value.payload.text === 'Feel free to upload your CV in PDF or Word format, ideally under 5MB.'){
-                            const fileInput = document.createElement('input');
-                            fileInput.type = 'file';
-                            fileInput.addEventListener('change', (event) => {
-                                const file = event.target.files[0];
-                                console.log('Selected file:', file);
-                                const reader = new FileReader();
-                                reader.onload = async function(event) {
-                                    const title = file.name;
-                                    console.log('File content:', fileContent);
-                                    console.log('File name:', title);
-                                    window.botpressWebChat.sendPayload({
-                                        type: 'trigger',
-                                        payload: {
-                                            title: title,
-                                            content: fileContent
-                                        }
-                                    })
-                                }
-                                reader.readAsText(file);
-                            })
-                            fileInput.click();
-                        }
-                }
-            },
-            ['MESSAGE.RECEIVED']
-        )
-    </script>
-</body>
+    <script src="https://files.bpcontent.cloud/2024/10/12/11/20241012114508-FMJPRO9S.js"></script>
+  </body>
 </html>
